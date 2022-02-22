@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "171743786499",
+    "project_id": "drowsy-detection-7d03e",
+    "storage_bucket": "drowsy-detection-7d03e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171743786499:android:ff41fa61ac703be7170036",
+        "android_client_info": {
+          "package_name": "com.example.drowsy_dashboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171743786499-p76ulfj0ft44ocfkb86accmmpt7hrcbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ4y5YKzgCPaFDMPXiJxbWO7kQbxhEUFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171743786499-p76ulfj0ft44ocfkb86accmmpt7hrcbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
