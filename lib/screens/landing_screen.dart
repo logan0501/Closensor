@@ -17,7 +17,7 @@ class LandingScreen extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => SignUpScreen(type: "Owner")));
@@ -31,7 +31,7 @@ class LandingScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => SignUpScreen(type: "Driver")));

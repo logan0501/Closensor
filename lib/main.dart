@@ -1,5 +1,7 @@
+import 'package:drowsy_dashboard/screens/home_screen.dart';
 import 'package:drowsy_dashboard/screens/landing_screen.dart';
 import 'package:drowsy_dashboard/screens/signin_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -10,10 +12,29 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+  dynamic user;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getdata();
+  }
+
+  void getdata() {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      this.user = user;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,7 +51,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const LandingScreen(),
+      home: user != null ? MyHomePage() : LandingScreen(),
     );
   }
 }

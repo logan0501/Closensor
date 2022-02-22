@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:drowsy_dashboard/screens/dashboard_screen.dart';
+import 'package:drowsy_dashboard/screens/home_screen.dart';
+import 'package:drowsy_dashboard/screens/landing_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +24,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text('SignIp Screen'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => LandingScreen()));
+          },
+        ),
+        title: Text('SignIn Screen'),
         centerTitle: true,
       ),
       body: _isLoading == false
@@ -107,6 +117,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   setState(() {
                                     _isLoading = false;
                                   });
+                                  if (widget.type == "Owner") {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MyHomePage()));
+                                  }
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       customSnackBar(
