@@ -71,13 +71,15 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
-                  document.data()! as Map<String, dynamic>;
+                  document.data() as Map<String, dynamic>;
               return GestureDetector(
                 onTap: () => {
+                  print(document.id),
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DashBoardScreen(data: data)))
+                          builder: (context) =>
+                              DashBoardScreen(id: document.id.toString())))
                 },
                 child: Container(
                   margin: EdgeInsets.all(5),

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:drowsy_dashboard/components/custom_snackbar.dart';
 import 'package:drowsy_dashboard/screens/dashboard_screen.dart';
 import 'package:drowsy_dashboard/screens/home_screen.dart';
 import 'package:drowsy_dashboard/screens/landing_screen.dart';
@@ -176,9 +177,4 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
-SnackBar customSnackBar(String message, Color color) {
-  return SnackBar(
-    content: Text(message),
-    backgroundColor: color,
-  );
-}
+
