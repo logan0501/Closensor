@@ -1,3 +1,4 @@
+import 'package:drowsy_dashboard/screens/add_driver.dart';
 import 'package:drowsy_dashboard/screens/dashboard_screen.dart';
 import 'package:drowsy_dashboard/screens/landing_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,14 +42,17 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text('DashBoard'),
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.logout),
-          onPressed: () {
-            FirebaseAuth.instance.signOut();
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => LandingScreen()));
-          },
-        ),
+
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LandingScreen()));
+            },
+          )
+        ],
       ),
       body: Center(
           // Center is a layout widget. It takes a single child and positions it
@@ -99,6 +103,110 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       )),
 // This trailing comma makes auto-formatting nicer for build methods.
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    radius: 35,
+                    child: Icon(
+                      Icons.account_circle,
+                      size: 70,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'UserName',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'logan@gmail.com',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              title: const Text(
+                'Add driver',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Color(0xff4E4E4E)),
+              ),
+              leading: Icon(Icons.add_reaction),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddDriverScreen()));
+              },
+            ),
+            ListTile(
+              title: const Text(
+                'Drivers list',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Color(0xff4E4E4E)),
+              ),
+              leading: Icon(Icons.format_list_bulleted),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: const Text(
+                'Edit driver',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Color(0xff4E4E4E)),
+              ),
+              leading: Icon(Icons.edit),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 5, left: 10, right: 10),
+              child: Divider(
+                thickness: 2,
+              ),
+            ),
+            ListTile(
+              title: const Text(
+                'Log out',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Color(0xff4E4E4E)),
+              ),
+              leading: Icon(Icons.logout),
+              onTap: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => LandingScreen()));
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
