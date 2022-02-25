@@ -46,7 +46,20 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         .snapshots();
     return Scaffold(
       appBar: AppBar(
-        title: Text("DashBoard Screen"),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu_rounded),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
+        title: Text(
+          "DashBoard",
+          style:
+              TextStyle(color: Color(0xff3E4685), fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
       ),
       body: Column(
         children: [

@@ -102,7 +102,7 @@ class LandingScreen extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
-                            "OWNER",
+                            "DRIVER",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xff3D4785)),

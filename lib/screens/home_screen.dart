@@ -37,15 +37,33 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      backgroundColor: Color(0xffF1F5FE),
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text('DashBoard'),
+        title: Text(
+          'DashBoard',
+          style:
+              TextStyle(color: Color(0xff525B92), fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Color(0xffF1F5FE),
+        elevation: 0,
         centerTitle: true,
-
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(
+              Icons.menu_rounded,
+              color: Color(0xff333333),
+            ),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: Icon(
+              Icons.logout,
+              color: Color(0xff333333),
+            ),
             onPressed: () {
               FirebaseAuth.instance.signOut();
               Navigator.pushReplacement(context,
@@ -83,18 +101,44 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: Container(
                   margin: EdgeInsets.all(5),
-                  padding: EdgeInsets.all(10),
-                  child: Card(
-                    child: ListTile(
-                      title: Text("Name : ${data["Name"]}"),
-                      subtitle: Container(
-                        margin: EdgeInsets.only(top: 10),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Vehicle Type : ${data["Vehicle Type"]}"),
-                              Text("Vehicle Num : ${data["Vehicle Num"]}"),
-                            ]),
+                  child: Container(
+                    decoration: BoxDecoration(boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 10,
+                          spreadRadius: 2,
+                          offset: Offset(0, 10))
+                    ]),
+                    child: Card(
+                      color: Color(0xffFFFFFF),
+                      elevation: 0,
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.account_box_rounded,
+                          size: 45,
+                          color: Color(0xff555C93).withOpacity(0.5),
+                        ),
+                        title: Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Text(
+                            "Name : ${data["Name"]}",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff020202)),
+                          ),
+                        ),
+                        subtitle: Container(
+                          margin: EdgeInsets.only(top: 5, bottom: 10),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Vehicle Type : ${data["Vehicle Type"]}",
+                                  style: TextStyle(color: Color(0xff717171)),
+                                ),
+                                Text("Vehicle Num : ${data["Vehicle Num"]}"),
+                              ]),
+                        ),
                       ),
                     ),
                   ),
@@ -112,12 +156,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color(0xff3E4685),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CircleAvatar(
+                    backgroundColor: Color(0xff555C93),
                     radius: 35,
                     child: Icon(
                       Icons.account_circle,
@@ -148,9 +193,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
-                    color: Color(0xff4E4E4E)),
+                    color: Color(0xff404585)),
               ),
-              leading: Icon(Icons.add_reaction),
+              leading: Icon(
+                Icons.add_reaction,
+                color: Color(0xff9B9B9B),
+              ),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(context,
@@ -163,9 +211,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
-                    color: Color(0xff4E4E4E)),
+                    color: Color(0xff404585)),
               ),
-              leading: Icon(Icons.format_list_bulleted),
+              leading: Icon(
+                Icons.format_list_bulleted,
+                color: Color(0xff9B9B9B),
+              ),
               onTap: () {
                 // Update the state of the app.
                 // ...
@@ -177,9 +228,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
-                    color: Color(0xff4E4E4E)),
+                    color: Color(0xff404585)),
               ),
-              leading: Icon(Icons.edit),
+              leading: Icon(
+                Icons.edit,
+                color: Color(0xff9B9B9B),
+              ),
               onTap: () {
                 // Update the state of the app.
                 // ...
@@ -199,7 +253,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontSize: 16,
                     color: Color(0xff4E4E4E)),
               ),
-              leading: Icon(Icons.logout),
+              leading: Icon(
+                Icons.logout,
+                color: Color(0xff9B9B9B),
+              ),
               onTap: () {
                 FirebaseAuth.instance.signOut();
                 Navigator.pushReplacement(context,

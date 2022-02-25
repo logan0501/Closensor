@@ -50,9 +50,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: Text(
                         widget.type,
                         style: TextStyle(
-                            color: Colors.blue,
+                            color: Color(0xff3C4485),
                             fontWeight: FontWeight.bold,
-                            
                             fontSize: 30),
                       )),
                   Container(
@@ -61,27 +60,37 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           const EdgeInsets.only(top: 5, left: 10, bottom: 20),
                       child: const Text(
                         'Sign in',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20, letterSpacing: 2),
                       )),
                   Container(
                     padding: const EdgeInsets.all(10),
                     child: TextField(
                       controller: nameController,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Email',
-                      ),
+                          hoverColor: Color(0xff3E4685),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(width: 1.5)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color(0xff3E4685), width: 1.5)),
+                          labelText: 'Email',
+                          labelStyle: TextStyle(color: Color(0xff3E4685))),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    padding: const EdgeInsets.all(10),
                     child: TextField(
                       obscureText: true,
                       controller: passwordController,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Password',
-                      ),
+                          hoverColor: Color(0xff3E4685),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(width: 1.5)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color(0xff3E4685), width: 1.5)),
+                          labelText: 'Password',
+                          labelStyle: TextStyle(color: Color(0xff3E4685))),
                     ),
                   ),
                   TextButton(
@@ -90,12 +99,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     },
                     child: const Text(
                       'Forgot Password',
+                      style: TextStyle(color: Color(0xff696969)),
                     ),
                   ),
                   Container(
                       height: 50,
                       padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Color(0xff3E4685)),
                         child: const Text('Login'),
                         onPressed: () async {
                           setState(() {
@@ -159,13 +171,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           }
                         },
                       )),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Row(
                     children: <Widget>[
-                      const Text('Does not have account?'),
+                      const Text(
+                        'Does not have account?',
+                        style: TextStyle(color: Color(0xff757575)),
+                      ),
                       TextButton(
                         child: const Text(
                           'Contact Admin',
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xff3E4685),
+                          ),
                         ),
                         onPressed: () {
                           //signup screen
