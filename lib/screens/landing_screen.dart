@@ -7,42 +7,111 @@ class LandingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Landing Screen'),
-        centerTitle: true,
-      ),
+      backgroundColor: Color(0xffF3F8FE),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SignUpScreen(type: "Owner")));
-              },
-              child: Container(
-                  padding: EdgeInsets.all(40),
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Text("OWNER")),
+            Image(
+              image: AssetImage("assets/logo-png.png"),
+              height: 100,
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SignUpScreen(type: "Driver")));
-              },
-              child: Container(
-                  padding: EdgeInsets.all(40),
-                  decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Text("DRIVER")),
-            )
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 5),
+              child: Text(
+                'Closensor',
+                style: TextStyle(letterSpacing: 2, color: Color(0xff3D4785)),
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignUpScreen(type: "Owner")));
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(40),
+                      decoration: BoxDecoration(
+                          color: Color(0xffFFFFFF),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xffEBEFFA),
+                              blurRadius: 10,
+                              spreadRadius: 3,
+                              offset: Offset(3, 3),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/owner.png",
+                            height: 40,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "OWNER",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff3D4785)),
+                          )
+                        ],
+                      )),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                SignUpScreen(type: "Driver")));
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(40),
+                      decoration: BoxDecoration(
+                          color: Color(0xffFFFFFF),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xffEBEFFA),
+                              blurRadius: 10,
+                              spreadRadius: 3,
+                              offset: Offset(3, 3),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/driver.png",
+                            height: 40,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "OWNER",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff3D4785)),
+                          )
+                        ],
+                      )),
+                ),
+              ],
+            ),
           ],
         ),
       ),

@@ -24,16 +24,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+      backgroundColor: Color(0xffF3F8FE),
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Color(0xffF3F8FE),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Color(0xff3C4485),
+          ),
           onPressed: () {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => LandingScreen()));
           },
         ),
-        title: Text('SignIn Screen'),
-        centerTitle: true,
       ),
       body: _isLoading == false
           ? Padding(
@@ -41,18 +45,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: ListView(
                 children: <Widget>[
                   Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.all(10),
+                      alignment: Alignment.topLeft,
+                      padding: EdgeInsets.only(top: 10, bottom: 5, left: 10),
                       child: Text(
                         widget.type,
                         style: TextStyle(
                             color: Colors.blue,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.bold,
+                            
                             fontSize: 30),
                       )),
                   Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(10),
+                      alignment: Alignment.topLeft,
+                      padding:
+                          const EdgeInsets.only(top: 5, left: 10, bottom: 20),
                       child: const Text(
                         'Sign in',
                         style: TextStyle(fontSize: 20),
@@ -176,5 +182,3 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 }
-
-
