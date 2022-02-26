@@ -21,8 +21,17 @@ class _AddDriverScreenState extends State<AddDriverScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffF0F4FD),
       appBar: AppBar(
-        title: Text('Add Driver'),
+        iconTheme: IconThemeData(color: Color(0xff3D4785)),
+        backgroundColor: Color(0xffF0F4FD),
+        elevation: 0,
+        title: Text(
+          'Add Driver',
+          style:
+              TextStyle(color: Color(0xff555C93), fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: _isLoading == false
@@ -33,13 +42,15 @@ class _AddDriverScreenState extends State<AddDriverScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: CircleAvatar(
-                        radius: 40,
+                        backgroundColor: Color(0xff3D4785),
+                        radius: 25,
                         child: Center(
                           child: IconButton(
                             padding: EdgeInsets.zero,
                             icon: Icon(
-                              Icons.add_a_photo,
+                              Icons.account_circle,
                               size: 40,
+                              color: Color(0xffF3F8FE),
                             ),
                             onPressed: () {
                               print('hello');
@@ -60,9 +71,14 @@ class _AddDriverScreenState extends State<AddDriverScreen> {
                     child: TextField(
                       controller: nameController,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Name',
-                      ),
+                          hoverColor: Color(0xff3E4685),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(width: 1.5)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color(0xff3E4685), width: 1.5)),
+                          labelText: 'Name',
+                          labelStyle: TextStyle(color: Color(0xff3E4685))),
                     ),
                   ),
                   Container(
@@ -70,19 +86,29 @@ class _AddDriverScreenState extends State<AddDriverScreen> {
                     child: TextField(
                       controller: emailController,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Email',
-                      ),
+                          hoverColor: Color(0xff3E4685),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(width: 1.5)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color(0xff3E4685), width: 1.5)),
+                          labelText: 'Email',
+                          labelStyle: TextStyle(color: Color(0xff3E4685))),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: TextField(
                       controller: mobileController,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Mobile',
-                      ),
+                          hoverColor: Color(0xff3E4685),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(width: 1.5)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color(0xff3E4685), width: 1.5)),
+                          labelText: 'Mobile',
+                          labelStyle: TextStyle(color: Color(0xff3E4685))),
                     ),
                   ),
                   Padding(
@@ -91,10 +117,11 @@ class _AddDriverScreenState extends State<AddDriverScreen> {
                       padding: const EdgeInsets.all(5),
                       width: double.infinity,
                       decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.2),
+                          color: Color(0xffE5E8F9),
                           borderRadius: BorderRadius.circular(5)),
                       child: Center(
                         child: DropdownButton<String>(
+                          isExpanded: true,
                           value: _chosenValue,
                           //elevation: 5,
                           style: TextStyle(color: Colors.black),
@@ -111,12 +138,15 @@ class _AddDriverScreenState extends State<AddDriverScreen> {
                               child: Text(value),
                             );
                           }).toList(),
-                          hint: Text(
-                            "Vehicle Type",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w300),
+                          hint: Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text(
+                              "Vehicle Type",
+                              style: TextStyle(
+                                  color: Color(0xff3E4685),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300),
+                            ),
                           ),
                           onChanged: (value) {
                             setState(() {
@@ -132,15 +162,22 @@ class _AddDriverScreenState extends State<AddDriverScreen> {
                     child: TextField(
                       controller: vehicleNumController,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Vehicle Number',
-                      ),
+                          hoverColor: Color(0xff3E4685),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(width: 1.5)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color(0xff3E4685), width: 1.5)),
+                          labelText: 'Vehicle Num',
+                          labelStyle: TextStyle(color: Color(0xff3E4685))),
                     ),
                   ),
                   Container(
                       padding: EdgeInsets.all(10),
                       width: double.infinity,
                       child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Color(0xff3D4785)),
                           onPressed: () async {
                             setState(() {
                               _isLoading = true;

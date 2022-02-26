@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              DashBoardScreen(id: document.id.toString())))
+                              DashBoardScreen(id: document.id.toString(),type:"owner")))
                 },
                 child: Container(
                   margin: EdgeInsets.all(5),
@@ -166,6 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     radius: 35,
                     child: Icon(
                       Icons.account_circle,
+                      color: Color(0xffFFFFFF),
                       size: 70,
                     ),
                   ),
@@ -173,7 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 20,
                   ),
                   Text(
-                    'UserName',
+                    'Loganathan',
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),

@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DashBoardScreen extends StatefulWidget {
-  String id;
-  DashBoardScreen({required this.id});
+  String id, type;
+  DashBoardScreen({required this.id, required this.type});
 
   @override
   State<DashBoardScreen> createState() => _DashBoardScreenState();
@@ -47,13 +47,29 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
-          builder: (context) => IconButton(
-            icon: Icon(Icons.menu_rounded),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
+          builder: (context) => widget.type == "owner"
+              ? IconButton(
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Color(0xff555B95),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                )
+              : IconButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LandingScreen()));
+                  },
+                  icon: Icon(
+                    Icons.logout,
+                    color: Color(0xff3E4685),
+                  )),
         ),
         title: Text(
-          "DashBoard",
+          "Profile",
           style:
               TextStyle(color: Color(0xff3E4685), fontWeight: FontWeight.bold),
         ),
@@ -66,9 +82,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: CircleAvatar(
+              backgroundColor: Color(0xff3D4785),
               radius: 35,
               child: Icon(
                 Icons.account_circle,
+                color: Colors.white,
                 size: 70,
               ),
             ),
@@ -102,14 +120,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               text: "Name : ",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: Color(0xff3E4685),
                               ),
                             ),
                             TextSpan(
                               text: "${data['Name']}",
                               style: TextStyle(
-                                color: Colors.black,
-                              ),
+                                  color: Color(0xff262626),
+                                  fontWeight: FontWeight.bold),
                             ),
                           ]),
                         ),
@@ -122,14 +140,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               text: "Email : ",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: Color(0xff3E4685),
                               ),
                             ),
                             TextSpan(
                               text: "${data['Email']}",
                               style: TextStyle(
-                                color: Colors.black,
-                              ),
+                                  color: Color(0xff262626),
+                                  fontWeight: FontWeight.bold),
                             ),
                           ]),
                         ),
@@ -142,14 +160,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               text: "Mobile : ",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: Color(0xff3E4685),
                               ),
                             ),
                             TextSpan(
                               text: "${data['Mobile']}",
                               style: TextStyle(
-                                color: Colors.black,
-                              ),
+                                  color: Color(0xff262626),
+                                  fontWeight: FontWeight.bold),
                             ),
                           ]),
                         ),
@@ -162,14 +180,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               text: "Vehicle Type : ",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: Color(0xff3E4685),
                               ),
                             ),
                             TextSpan(
                               text: "${data['Vehicle Type']}",
                               style: TextStyle(
-                                color: Colors.black,
-                              ),
+                                  color: Color(0xff262626),
+                                  fontWeight: FontWeight.bold),
                             ),
                           ]),
                         ),
@@ -182,14 +200,14 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               text: "Vehicle Num : ",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: Color(0xff3E4685),
                               ),
                             ),
                             TextSpan(
                               text: "${data['Vehicle Num']}",
                               style: TextStyle(
-                                color: Colors.black,
-                              ),
+                                  color: Color(0xff262626),
+                                  fontWeight: FontWeight.bold),
                             ),
                           ]),
                         ),
@@ -218,7 +236,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 2, horizontal: 20),
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.3),
+                      color: Color(0xffE5E8F9),
                       borderRadius: BorderRadius.circular(5)),
                   child: DropdownButton<String>(
                     value: chosenMonth,
@@ -228,15 +246,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     items: months.map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value),
+                        child: Text(
+                          value,
+                          style: TextStyle(
+                              color: Color(0xff3E4685),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
                       );
                     }).toList(),
                     hint: Text(
                       "Month",
                       style: TextStyle(
-                          color: Colors.black,
+                          color: Color(0xff3E4685),
                           fontSize: 16,
-                          fontWeight: FontWeight.w300),
+                          fontWeight: FontWeight.bold),
                     ),
                     onChanged: (value) {
                       setState(() {
@@ -251,7 +275,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 2, horizontal: 20),
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.3),
+                      color: Color(0xffE5E8F9),
                       borderRadius: BorderRadius.circular(5)),
                   child: DropdownButton<String>(
                     value: chosenyear,
@@ -261,15 +285,19 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     items: years.map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value),
+                        child: Text(value,
+                            style: TextStyle(
+                                color: Color(0xff3E4685),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold)),
                       );
                     }).toList(),
                     hint: Text(
                       "Year",
                       style: TextStyle(
-                          color: Colors.black,
+                          color: Color(0xff3E4685),
                           fontSize: 16,
-                          fontWeight: FontWeight.w300),
+                          fontWeight: FontWeight.bold),
                     ),
                     onChanged: (value) {
                       setState(() {
@@ -303,19 +331,37 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 print(mytimestamps.length);
                 timestamplist.sort((a, b) => a.time.compareTo(b.time));
                 return SfCartesianChart(
-                  title: ChartTitle(text: 'Drowsiness Plot'),
+                  plotAreaBorderWidth: 0,
+                  title: ChartTitle(
+                      text: 'Drowsiness Plot',
+                      textStyle: TextStyle(
+                          color: Color(0xff3E4685),
+                          fontWeight: FontWeight.bold)),
                   primaryXAxis: CategoryAxis(
+                      title: AxisTitle(
+                          text: 'Timestamp',
+                          textStyle: TextStyle(
+                              color: Color(0xff727272), fontSize: 10)),
                       labelIntersectAction:
                           AxisLabelIntersectAction.multipleRows,
                       labelStyle:
-                          TextStyle(color: Colors.deepOrange, fontSize: 10)),
-                  primaryYAxis:
-                      NumericAxis(minimum: 0, maximum: 10, interval: 1),
-                  series: <LineSeries>[
-                    LineSeries<TimeStamp, String>(
+                          TextStyle(color: Color(0xff020202), fontSize: 10)),
+                  primaryYAxis: NumericAxis(
+                      minimum: 0,
+                      maximum: 10,
+                      interval: 1,
+                      title: AxisTitle(
+                          text: 'Count',
+                          textStyle: TextStyle(
+                              color: Color(0xff727272), fontSize: 10))),
+                  series: <ChartSeries>[
+                    ColumnSeries<TimeStamp, String>(
+                        color: Color(0xff3E4685).withOpacity(0.8),
+                        enableTooltip: true,
                         dataSource: timestamplist,
                         xValueMapper: (TimeStamp timestamp, _) {
                           if (choice == "YEAR") {
+                            Map<String, int> umap = {};
                             String date = getYear(timestamp.time.toString());
                             if (chosenyear == date) {
                               print(date);
@@ -324,8 +370,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                             }
                           } else {
                             String date = getMonth(timestamp.time.toString());
-                            if (chosenMonth == "ALL")
+                            print(getMonth(timestamp.time.toString()));
+                            if (chosenMonth == "ALL" &&
+                                getYear(timestamp.time.toString()) ==
+                                    chosenyear)
                               return getDate(timestamp.time.toString());
+
                             if (int.parse(date) ==
                                 months.indexOf(chosenMonth!)) {
                               return getDate(timestamp.time.toString());

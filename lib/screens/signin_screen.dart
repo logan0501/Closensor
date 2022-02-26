@@ -142,6 +142,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 MyHomePage()));
+                                  } else if (widget.type == "Driver") {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                DashBoardScreen(
+                                                    id: id, type: "driver")));
                                   }
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
