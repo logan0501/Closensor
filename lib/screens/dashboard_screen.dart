@@ -1,14 +1,15 @@
 import 'dart:collection';
 import 'dart:io';
-import 'package:excel/excel.dart';
+import 'package:path/path.dart';
+
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:drowsy_dashboard/screens/landing_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
+
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:syncfusion_flutter_xlsio/xlsio.dart' as excel;
 
 class DashBoardScreen extends StatefulWidget {
   String id, type;
@@ -42,24 +43,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   String? chosenMonth;
   String choice = "YEAR";
   Map<String, String> mytimestamps = {};
-  var excel = Excel.createExcel();
-  void saveExcel() async {
-    var res = await Permission.storage.request();
-    final directory = await getApplicationDocumentsDirectory();
-    print(directory);
-    File file = File(("${directory.path}/excel2.xlsx"));
-    if (res.isGranted) {
-      if (await file.exists()) {
-        print("File exist");
-        await file.delete().catchError((e) {
-          print(e);
-        });
-      }
 
-      file.writeAsString("hello");
-      print(file.path);
-    }
-  }
+  void saveExcel() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +88,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         actions: [
           GestureDetector(
             onTap: () {
-              Sheet sheetObject = excel['Sheet1'];
-              var cell = sheetObject.cell(CellIndex.indexByString("A1"));
-              cell.value = 8; // dynamic values support provided;
+              // dynamic values support provided;
+
               saveExcel();
             },
             child: Padding(
@@ -371,7 +355,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 });
                 print(mytimestamps.length);
                 timestamplist.sort((a, b) => a.time.compareTo(b.time));
+
                 timeStamps = timestamplist;
+
                 return SfCartesianChart(
                   plotAreaBorderWidth: 0,
                   title: ChartTitle(
