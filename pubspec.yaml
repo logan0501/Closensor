@@ -40,6 +40,9 @@ dependencies:
   syncfusion_flutter_charts: ^19.4.52
   firebase_auth: ^3.3.7
   flutter_launcher_icons: ^0.9.2
+  excel: 
+  permission_handler: 
+  path_provider:
 dev_dependencies:
   flutter_test:
     sdk: flutter
