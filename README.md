@@ -1,6 +1,6 @@
 # Closensor - Cross Platform Application made using Flutter
 
-![Artboard 1](https://user-images.githubusercontent.com/59384550/155912827-e0929e53-7536-4e80-add3-9c86df2098a0.jpg)
+<img src="https://user-images.githubusercontent.com/59384550/155912827-e0929e53-7536-4e80-add3-9c86df2098a0.jpg" width="300"/>
 
 
 Mobile Application to display the statistics of driver slept during his driving journey from the data sent by rasberry pi.
